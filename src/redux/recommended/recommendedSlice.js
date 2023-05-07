@@ -19,14 +19,7 @@ const initialState = {
 const recommendedSlice = createSlice({
   name: "recommended",
   initialState,
-  reducers: {
-    // render: (state) => {
-    //   state
-    // },
-    // otraAccion: (state, action) => {
-    //   state
-    // },
-  },
+  reducers: {},
 });
 
 export const recommendedReducer = recommendedSlice.reducer;

@@ -20,11 +20,11 @@ export const FormContainer = styled.form`
   }
 `;
 
-export const FormField = styled.div`
+export const FormFieldStyled = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 0.3rem;
   width: 100%;
 
   & small {

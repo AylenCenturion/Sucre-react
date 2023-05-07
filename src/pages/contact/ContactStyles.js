@@ -1,16 +1,21 @@
 import styled from "styled-components";
 
 export const ContactSection = styled.section`
-  max-width: 850px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
+
+  @media screen and (max-width: 750px) {
+    width: unset;
+    /* max-width: 600px; */
+  }
 `;
 
 export const ContactText = styled.p`
-  color: var(--darkerGrey);
+  color: black;
   font-size: clamp (15px, 4vw, 20px);
   text-align: center;
   padding: 5px;
@@ -18,20 +23,29 @@ export const ContactText = styled.p`
 
 export const ContactForm = styled.form`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const InputsContainer = styled.div`
+  display: flex;
   justify-content: space-between;
   width: 100%;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 750px) {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
 
-  & input {
-    width: 30%;
+  & div {
+    width: 32%;
     min-width: 150px;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 750px) {
       width: 100%;
     }
   }
@@ -39,7 +53,15 @@ export const ContactForm = styled.form`
 
 export const MessageBox = styled.div`
   width: 100%;
-  height: 10vh;
+  height: 12vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  & small {
+    color: var(--red);
+    font-size: 12px;
+  }
 `;
 
 export const ContactBtnContainer = styled.div`

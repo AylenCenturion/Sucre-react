@@ -6,14 +6,26 @@ import {
   ContactForm,
   ContactSection,
   ContactText,
+  InputsContainer,
   MessageBox,
 } from "./ContactStyles";
-import { InputStyled } from "../../components/UI/input/InputStyled";
 import { Textarea } from "../../components/UI/Textarea";
 import { SideBtn } from "../../components/UI/SideBtn";
 import { BackSectionStyled } from "../../components/UI/BackSection";
+import { useFormik } from "formik";
+import { contactInitialValues, contactValidationSchema } from "../../formik";
+import ContactInput from "../../components/UI/input/contactInput";
 
 const Contact = () => {
+  const { getFieldProps, handleSubmit, errors, touched } = useFormik({
+    initialValues: contactInitialValues,
+    validationSchema: contactValidationSchema,
+    onSubmit: (values, { resetForm }) => {
+      console.log({ values });
+      resetForm();
+    },
+  });
+
   return (
     <>
       <Layout>
@@ -22,32 +34,48 @@ const Contact = () => {
         <BackSectionStyled>
           <ContactSection>
             <ContactText>
-              To budget your event, share your experience or give us
-              suggestions.
+              Para reservar un evento, compartir tu experiencia o darnos
+              sugerencias.
             </ContactText>
-            <ContactForm>
-              <InputStyled
-                type="text"
-                placeholder="Enter your name"
-                name="name"
-              />
-              <InputStyled
-                type="email"
-                placeholder="Enter your email adress"
-                name="email"
-              />
-              <InputStyled
-                type="text"
-                placeholder="Enter your phone"
-                name="phone"
-              />
+            <ContactForm onSubmit={(e) => handleSubmit(e)}>
+              <InputsContainer>
+                <ContactInput
+                  label="Nombre"
+                  name="name"
+                  type="text"
+                  isError={touched.name && errors.name}
+                  {...getFieldProps("name")}
+                />
+                <ContactInput
+                  label="Email"
+                  name="email"
+                  type="email"
+                  isError={touched.email && errors.email}
+                  {...getFieldProps("email")}
+                />
+                <ContactInput
+                  label="Teléfono"
+                  name="phone"
+                  type="text"
+                  isError={touched.address && errors.address}
+                  {...getFieldProps("phone")}
+                />
+              </InputsContainer>
+              <MessageBox>
+                <Textarea
+                  placeholder="Tu mensaje..."
+                  name="message"
+                  id="message"
+                  {...getFieldProps("message")}
+                />
+                {touched.message && errors.message && (
+                  <small>{touched.message && errors.message}</small>
+                )}
+              </MessageBox>
+              <ContactBtnContainer>
+                <SideBtn type="submit">Enviar</SideBtn>
+              </ContactBtnContainer>
             </ContactForm>
-            <MessageBox>
-              <Textarea placeholder="Your message..." name="message" />
-            </MessageBox>
-            <ContactBtnContainer>
-              <SideBtn type="button">Send</SideBtn>
-            </ContactBtnContainer>
           </ContactSection>
         </BackSectionStyled>
       </Layout>

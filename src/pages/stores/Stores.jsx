@@ -9,7 +9,7 @@ const Stores = () => {
   return (
     <>
       <Layout>
-        <SideHero section="Stores" />
+        <SideHero section="Tiendas" />
         <BackStoresSection>
           <Store
             name="Belgrano"

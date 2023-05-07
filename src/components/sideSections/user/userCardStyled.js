@@ -5,58 +5,48 @@ export const CartCardStyled = styled.div`
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #fff;
   border-radius: 7px;
+  border: 1px solid var(--brown);
   padding: 8px;
   width: 100%;
 `;
 
 export const CartCardImg = styled.div`
-  width: 100px;
+  width: 120px;
 
   & img {
     width: 100%;
     height: 100%;
-    border-radius: 5px;
-  }
-
-  @media screen and (max-width: 480px) {
-    width: 100px;
+    border-radius: 7px;
   }
 `;
 
 export const CartProductData = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
   gap: 10px;
   max-width: 100px;
 
   & p {
-    font-size: 15px;
-    color: #fff;
+    font-size: 18px;
     font-weight: 600;
   }
 
   & span {
-    font-size: 15px;
-    color: #fff;
-    font-weight: 400;
-  }
-
-  @media screen and (max-width: 480px) {
-    max-width: 150px;
+    font-size: 16px;
+    font-weight: 500;
   }
 `;
 
 export const QuantityRegulator = styled.div`
   display: flex;
+  align-items: center;
   gap: 7px;
 
   & p {
     font-size: 700;
     font-size: 15px;
-    color: #fff;
   }
 `;
 
@@ -65,10 +55,10 @@ export const QuantityHandler = styled.button`
   height: 16px;
   font-size: 17px;
   font-weight: 500;
-  color: #473f35;
   border-radius: 5px;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: transparent;
+  color: var(--brown);
+  border: 1px solid var(--brown);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,7 +66,7 @@ export const QuantityHandler = styled.button`
   transition: all 0.2s ease-in;
 
   &:hover {
-    background-color: transparent;
+    background-color: var(--brown);
     color: #fff;
   }
 `;

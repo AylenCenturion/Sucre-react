@@ -11,34 +11,21 @@ import {
   faCartShopping,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
-import AuthContext from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Blur } from "../../UI/Blur";
 import Cart from "../cart/Cart";
+import {
+  handleBlur,
+  handleBurger,
+  handleCart,
+} from "../../../redux/navbar/navbarSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavBar = (props) => {
-  const { isAuth, user } = useContext(AuthContext);
+  const { isAuth, username } = useSelector((state) => state.user);
   const navigate = useNavigate();
-
-  const [burgerDrop, setBurgerDrop] = useState(false);
-  const [cartDrop, setCartDrop] = useState(false);
-  const [blur, setBlur] = useState(false);
-
-  const handleBurger = () => {
-    setBurgerDrop(!burgerDrop);
-    cartDrop ? setCartDrop(!cartDrop) : setBlur(!blur);
-  };
-
-  const handleCart = () => {
-    setCartDrop(!cartDrop);
-    burgerDrop ? setBurgerDrop(!burgerDrop) : setBlur(!blur);
-  };
-
-  const handleBlur = () => {
-    setBlur(!blur);
-    burgerDrop ? setBurgerDrop(!burgerDrop) : setCartDrop(!cartDrop);
-  };
+  const dispatch = useDispatch();
+  const { blur, burgerDrop, cartDrop } = useSelector((state) => state.navbar);
 
   return (
     <>
@@ -47,14 +34,14 @@ const NavBar = (props) => {
           <NavLogo
             className="burger"
             icon={faBars}
-            onClick={() => handleBurger()}
+            onClick={() => dispatch(handleBurger())}
           />
 
           <Dropdown open={burgerDrop} className="navMenu" bg={props.color}>
             <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/products">Products</StyledNavLink>
-            <StyledNavLink to="/contact">Contact</StyledNavLink>
-            <StyledNavLink to="/stores">Stores</StyledNavLink>
+            <StyledNavLink to="/productos">Productos</StyledNavLink>
+            <StyledNavLink to="/contacto">Contacto</StyledNavLink>
+            <StyledNavLink to="/tiendas">Tiendas</StyledNavLink>
           </Dropdown>
         </nav>
 
@@ -63,21 +50,21 @@ const NavBar = (props) => {
             className="fixedLogos"
             icon={faUser}
             onClick={() =>
-              isAuth ? navigate(`/username/${user}`) : navigate("/login")
+              isAuth ? navigate(`/usuario`) : navigate("/signin")
             }
           />
 
           <NavLogo
             className="fixedLogos"
             icon={faCartShopping}
-            onClick={() => handleCart()}
+            onClick={() => dispatch(handleCart())}
           />
           <Dropdown open={cartDrop} bg={props.color}>
             <Cart color={props.color} />
           </Dropdown>
         </FixedLogosContainer>
       </StyledNavbar>
-      <Blur open={blur} onClick={() => handleBlur()} />
+      <Blur open={blur} onClick={() => dispatch(handleBlur())} />
     </>
   );
 };

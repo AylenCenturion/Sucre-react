@@ -1,8 +1,8 @@
 export const categories = [
   {
     id: 1,
-    title: "Cakes",
-    category: "cakes",
+    title: "Tortas",
+    category: "tortas",
   },
   {
     id: 2,
@@ -11,12 +11,12 @@ export const categories = [
   },
   {
     id: 3,
-    title: "Loaf cakes",
-    category: "loafCakes",
+    title: "Budines",
+    category: "budines",
   },
   {
     id: 4,
-    title: "Others",
-    category: "others",
+    title: "Otros",
+    category: "otros",
   },
 ];

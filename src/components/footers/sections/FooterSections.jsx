@@ -9,6 +9,7 @@ import {
   AnimatedPlane,
   FooterNav,
   FooterIcon,
+  FooterForm,
 } from "./FooterSectionsStyles";
 import {
   faEnvelope,
@@ -16,17 +17,23 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useFormik } from "formik";
+import { footerInitialValues, footerValidationSchema } from "../../../formik";
 
 const FooterSections = () => {
-  const [value, setValue] = useState("");
+  const { getFieldProps, handleSubmit, errors, touched } = useFormik({
+    initialValues: footerInitialValues,
+    validationSchema: footerValidationSchema,
+    onSubmit: (values, { resetForm }) => {
+      console.log({ values });
+      resetForm();
+    },
+  });
 
-  const handleSubmit = () => {
-    setValue("");
-  };
   return (
     <FooterSectionsStyled>
       <FooterSection>
-        <FooterTitle>Contact</FooterTitle>
+        <FooterTitle>Contacto</FooterTitle>
         <FooterContact>
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=sucre@gmail.com"
@@ -47,29 +54,33 @@ const FooterSections = () => {
       </FooterSection>
 
       <FooterSection>
-        <FooterTitle>Navegate</FooterTitle>
+        <FooterTitle>Navegá</FooterTitle>
         <FooterNav>
           <FooterLinkItem to="/">Home</FooterLinkItem>
-          <FooterLinkItem to="/products">Products</FooterLinkItem>
-          <FooterLinkItem to="/contact">Contact</FooterLinkItem>
-          <FooterLinkItem to="/stores">Stores</FooterLinkItem>
+          <FooterLinkItem to="/productos">Products</FooterLinkItem>
+          <FooterLinkItem to="/contacto">Contact</FooterLinkItem>
+          <FooterLinkItem to="/tiendas">Stores</FooterLinkItem>
         </FooterNav>
       </FooterSection>
 
       <FooterSection>
-        <FooterTitle>Suscribe</FooterTitle>
-        <p>Stay up to date with our latest news</p>
-        <SubscribeContainer>
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Type your mail"
-          />
-          <AnimatedPlane onClick={() => handleSubmit()}>
-            <FontAwesomeIcon icon={faPaperPlane} />
-          </AnimatedPlane>
-        </SubscribeContainer>
+        <FooterTitle>Suscribite</FooterTitle>
+        <p>Para estar al día con nuestras noticias</p>
+        <FooterForm onSubmit={(e) => handleSubmit(e)}>
+          <SubscribeContainer>
+            <input
+              name="email"
+              type="email"
+              placeholder="Ingresá tu email"
+              id="email"
+              {...getFieldProps("email")}
+            />
+            <AnimatedPlane type="submit">
+              <FontAwesomeIcon icon={faPaperPlane} />
+            </AnimatedPlane>
+          </SubscribeContainer>
+          <small>{touched.email && errors.email}</small>
+        </FooterForm>
       </FooterSection>
     </FooterSectionsStyled>
   );

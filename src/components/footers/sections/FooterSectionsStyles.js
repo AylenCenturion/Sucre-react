@@ -52,6 +52,19 @@ export const FooterNav = styled.div`
   gap: 2px;
 `;
 
+export const FooterForm = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  & small {
+    color: var(--red);
+    font-size: 12px;
+    position: relative;
+    top: -15px;
+    left: 10px;
+  }
+`;
+
 export const SubscribeContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -60,7 +73,7 @@ export const SubscribeContainer = styled.div`
   color: var(--black);
   border-radius: 2px;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
   gap: 8px;
 
   & input {
@@ -78,8 +91,10 @@ const plane = keyframes`
   }
 `;
 
-export const AnimatedPlane = styled.div`
+export const AnimatedPlane = styled.button`
   color: var(--black);
+  background-color: transparent;
+  border: none;
   cursor: pointer;
   font-size: 22px;
 

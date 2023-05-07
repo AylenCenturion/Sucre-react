@@ -5,25 +5,21 @@ import {
 } from "../../../pages/products/ProductsStyles";
 import { CartBtn } from "../../UI/CartBtn";
 import { useDispatch } from "react-redux";
-import { cartActions } from "../../../redux/cart/cart";
+import { addToCart } from "../../../redux/cart/cartSlice";
 
-export default function ProductCard({ name, price, img, id }) {
+export default function ProductCard(product) {
   const dispatch = useDispatch();
+  const { name, price, img, id } = product;
 
   return (
     <>
-      <ProductCardStyled>
+      <ProductCardStyled key={id}>
         <img src={img} alt={name} />
         <ProductData>
           <span>{name}</span>
           <p>${price}</p>
-          <CartBtn
-            card={true}
-            onClick={() =>
-              dispatch(cartActions.addToCart({ name, price, img, id }))
-            }
-          >
-            Add to cart
+          <CartBtn card={true} onClick={() => dispatch(addToCart(product))}>
+            Añadir al carrito
           </CartBtn>
         </ProductData>
       </ProductCardStyled>

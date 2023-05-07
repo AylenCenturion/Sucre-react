@@ -67,6 +67,8 @@ export const ProductData = styled.div`
   justify-content: space-between;
   height: 50%;
   gap: 9px;
+  max-width: 190px;
+  width: 80%;
 
   & span {
     font-weight: 500;

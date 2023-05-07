@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CartBottom,
   CartCount,
-  CartDivider,
+  Divider,
   CartTitle,
   DeliveryInfo,
   ShoppingList,
@@ -10,70 +10,86 @@ import {
 import { CartBtn } from "../../UI/CartBtn";
 import { useNavigate } from "react-router-dom";
 import CartCard from "./CartCard";
-import { useSelector } from "react-redux";
-import { cartActions } from "../../../redux/cart/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getCartTotal } from "../../../redux/cart/cartSlice";
 
 export default function Cart(props) {
   const navigate = useNavigate();
 
-  const { cartItems, shippingCost } = useSelector((state) => state.cart);
+  const { isAuth, username } = useSelector((state) => state.user);
 
-  // const hiddenCart = useSelector((state) => state.cart.hidden);
+  const { cart, totalPrice, shippingCost } = useSelector(
+    (state) => state.allCart
+  );
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const totalPrice = cartItems.length
-  //   ? cartItems.reduce((acc, item) => {
-  //       acc += item.price * item.quantity;
-  //     })
-  //   : 0;
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [cart]);
 
   return (
     <>
       <CartTitle>
-        <h4>My products</h4>
+        <h4>Mis productos</h4>
       </CartTitle>
 
       <ShoppingList>
-        {/* {cartItems.length ? (
-          cartItems.map((item) => (
+        {cart.length ? (
+          cart.map((item) => (
             <CartCard color={props.color} key={item.id} {...item} />
           ))
         ) : (
-          <p>The cart is empty</p>
-        )} */}
+          <p>El carrito esta vacío</p>
+        )}
       </ShoppingList>
 
-      <CartCount>
-        <DeliveryInfo>
-          <p>Subtotal:</p>
-          {/* <p>${totalPrice}</p> */}
-        </DeliveryInfo>
-        <DeliveryInfo>
-          <p>Delivery:</p>
-          <p>${shippingCost}</p>
-        </DeliveryInfo>
-        <CartDivider />
-        <DeliveryInfo>
-          {/* <h3>Total:</h3>
-          <span>${shippingCost + totalPrice} </span> */}
-        </DeliveryInfo>
-      </CartCount>
+      {cart.length ? (
+        <CartCount>
+          <DeliveryInfo>
+            <p>Sub-total:</p>
+            <p>${totalPrice}</p>
+          </DeliveryInfo>
+          <DeliveryInfo>
+            <p>Delivery:</p>
+            <p>${shippingCost}</p>
+          </DeliveryInfo>
+          <Divider />
+          <DeliveryInfo>
+            <h3>Total:</h3>
+            <span>${shippingCost + totalPrice} </span>
+          </DeliveryInfo>
+        </CartCount>
+      ) : (
+        ""
+      )}
 
       <CartBottom>
-        <CartBtn disabled={!cartItems.length} c={props.color}>
-          BUY
+        <CartBtn
+          disabled={!cart.length}
+          c={props.color}
+          onClick={() =>
+            !isAuth
+              ? alert("Registrese para completar su compra") &&
+                navigate("/signin")
+              : navigate(`/usuario/${username}`)
+          }
+        >
+          COMPRAR
         </CartBtn>
         <CartBtn
           c={props.color}
-          disabled={!cartItems.length}
-          onClick={() => cartActions.clearCart()}
+          disabled={!cart.length}
+          onClick={() => dispatch(clearCart())}
         >
-          DELETE CART
+          BORRAR CARRITO
         </CartBtn>
-        <p>
-          <span onClick={() => navigate("/login")}>Log in</span> to shop
-        </p>
+        {!isAuth && (
+          <p>
+            <span onClick={() => navigate("/signin")}>Registrate</span> para
+            comprar
+          </p>
+        )}
       </CartBottom>
     </>
   );

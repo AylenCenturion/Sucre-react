@@ -13,7 +13,7 @@ export const SideBtn = styled.button`
     selected
       ? "linear-gradient( 45deg, var(--brown) 50%, var(--brown) 50%)"
       : "linear-gradient( 45deg, var(--brown) 50%, #fff 50%)"};
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "auto" : "pointer")};
   background-size: 250%;
   background-repeat: no-repeat;
   background-position: right;
@@ -23,14 +23,9 @@ export const SideBtn = styled.button`
   align-items: center;
 
   &:hover {
-    background-position: left;
-    color: #fff;
+    background-position: ${({ disabled }) => (disabled ? "right" : "left")};
+    color: ${({ disabled }) => (disabled ? "var(--brown)" : "#fff")};
   }
-
-  /* &:focus{
-    background-image: linear-gradient( 45deg, var(--brown) 50%, var(--brown) 50%);
-    color: #fff;
-  } */
 
   &.category {
     width: 160px;

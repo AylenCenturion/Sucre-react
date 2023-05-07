@@ -11,7 +11,7 @@ export default function HomeHero() {
       <HomeHeroStyled>
         <HeroTitleContainer>
           <HeroTitle>
-            Welcome to sweetness, welcome to <span>sucré</span>
+            Bienvenido a la dulzura, bienvenido a <span>sucré</span>
           </HeroTitle>
         </HeroTitleContainer>
       </HomeHeroStyled>

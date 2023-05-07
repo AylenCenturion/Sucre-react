@@ -38,28 +38,28 @@ export const DeliveryInfo = styled.div`
   width: 100%;
 
   & p {
-    font-size: 13px;
-    color: #fff;
+    font-size: ${({ user }) => (user ? "15px" : "13px")};
+    color: ${({ user }) => (user ? "black" : "#fff")};
   }
 
   & h3 {
     font-size: 16px;
     font-weight: 600;
-    color: #fff;
+    color: ${({ user }) => (user ? "black" : "#fff")};
     text-decoration: none;
   }
 
   & span {
     font-size: 700;
-    font-size: 15px;
-    color: #fff;
+    font-size: 16px;
+    color: ${({ user }) => (user ? "black" : "#fff")};
   }
 `;
 
-export const CartDivider = styled.div`
+export const Divider = styled.div`
   height: 1px;
   width: 100%;
-  background-color: #fff;
+  background-color: ${({ user }) => (user ? "black" : "#fff")};
 `;
 
 export const CartBottom = styled.div`
@@ -68,6 +68,7 @@ export const CartBottom = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  width: 80%;
 
   & p {
     font-size: 14px;
@@ -78,5 +79,6 @@ export const CartBottom = styled.div`
     color: #fff;
     font-weight: 700;
     font-size: 15px;
+    cursor: pointer;
   }
 `;

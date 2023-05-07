@@ -3,11 +3,10 @@ import { InputStyled } from "./InputStyled";
 
 import React from "react";
 
-export default function FormField({ name, label, type, isError, ...field }) {
+export default function ContactInput({ name, label, type, isError, ...field }) {
   return (
     <>
       <FormFieldStyled>
-        <label htmlFor={name}>{label}</label>
         <InputStyled
           type={type}
           name={name}

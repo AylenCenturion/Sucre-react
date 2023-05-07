@@ -11,10 +11,10 @@ const Products = () => {
   return (
     <>
       <Layout>
-        <SideHero section="Products" />
+        <SideHero section="Productos" />
 
         <ProductsSection>
-          <SectionTitle>Recommended</SectionTitle>
+          <SectionTitle>Recomendados</SectionTitle>
           <RecommendedContainer />
           <CategoriesContainer />
           <ProductsContainer />

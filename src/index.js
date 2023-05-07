@@ -14,7 +14,7 @@ root.render(
   <>
     <GlobalStyles />
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <App />
         </BrowserRouter>

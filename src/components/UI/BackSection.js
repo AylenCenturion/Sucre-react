@@ -5,6 +5,9 @@ export const BackSectionStyled = styled.div`
   padding: 40px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   margin: 0 auto;
   background: #fff;
 `;

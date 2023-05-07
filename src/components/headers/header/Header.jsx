@@ -3,8 +3,6 @@ import { BackHeaderStyled, HeaderStyled, LogoContainer } from "./StyledHeader";
 import img from "../../../assets/img";
 import NavBar from "../navbar/NavBar";
 import { useNavigate } from "react-router-dom";
-import { Blur } from "../../UI/Blur";
-import { useState } from "react";
 
 const Header = (props) => {
   const navigate = useNavigate();

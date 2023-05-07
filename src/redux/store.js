@@ -2,30 +2,33 @@ import { configureStore } from "@reduxjs/toolkit";
 import { productsReducer } from "./products/productsSlice";
 import { recommendedReducer } from "./recommended/recommendedSlice";
 import { categoriesReducer } from "./categories/categoriesSlice";
-import { cartReducer } from "./cart/cart";
+// import { cartReducer } from "./cart/cart";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
+import cartReducer from "../redux/cart/cartSlice";
+import { navbarReducer } from "./navbar/navbarSlice";
+import { userReducer } from "./user/user.Slice";
 
 const persistConfig = {
   key: "root",
   storage,
-  whiteList: ["cart"],
 };
 
-const persistedReducer = persistReducer(persistConfig, cartReducer);
+const cartPersistedReducer = persistReducer(persistConfig, cartReducer);
+const userPersistedReducer = persistReducer(persistConfig, userReducer);
 
 export const store = configureStore({
   reducer: {
     products: productsReducer,
     recommended: recommendedReducer,
     categories: categoriesReducer,
-    cart: persistedReducer,
+    allCart: cartPersistedReducer,
+    navbar: navbarReducer,
+    user: userPersistedReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(thunk),
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: [thunk],
 });
 
 export const persistor = persistStore(store);

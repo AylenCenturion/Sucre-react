@@ -8,7 +8,7 @@ export const RegisterSectionStyled = styled.section`
   align-items: center;
   margin: 0 auto;
   max-width: 1400px;
-`
+`;
 
 export const HomeSignIn = styled.div`
   background-color: var(--brown);
@@ -20,12 +20,12 @@ export const HomeSignIn = styled.div`
   height: 20rem;
   margin: 0 auto;
 
-  @media screen and ( max-width: 555px){
+  @media screen and (max-width: 555px) {
     height: 12rem;
   }
-`
+`;
 
-export const HomeLogIn = styled.div`
+export const HomeProducts = styled.div`
   background-image: url(${img.slice});
   background-size: cover;
   background-repeat: no-repeat;
@@ -37,7 +37,7 @@ export const HomeLogIn = styled.div`
   height: 20rem;
   position: relative;
 
-  &::after{
+  &::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -45,10 +45,10 @@ export const HomeLogIn = styled.div`
     backdrop-filter: brightness(0.6);
   }
 
-  @media screen and ( max-width: 555px){
+  @media screen and (max-width: 555px) {
     height: 12rem;
   }
-`
+`;
 
 export const RegisterSectionContent = styled.div`
   width: 80%;
@@ -59,5 +59,5 @@ export const RegisterSectionContent = styled.div`
   align-items: center;
   z-index: 2;
   text-align: center;
-  gap: 25px;  
-`
+  gap: 25px;
+`;

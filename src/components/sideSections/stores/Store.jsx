@@ -26,9 +26,9 @@ export default function Store(props) {
             <p>{props.adress}</p>
             <FontAwesomeIcon icon={faClock} />
             <div>
-              <p>Monday to friday</p>
+              <p>Lunes a viernes</p>
               <p>{props.weekHours}</p>
-              <p>Weekends and Holidays</p>
+              <p>Fines de semana y feriados</p>
               <p>{props.weekendHours}</p>
             </div>
             <FontAwesomeIcon icon={faPhone} />
