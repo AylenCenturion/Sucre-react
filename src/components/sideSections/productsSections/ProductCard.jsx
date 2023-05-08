@@ -5,11 +5,19 @@ import {
 } from "../../../pages/products/ProductsStyles";
 import { CartBtn } from "../../UI/CartBtn";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../../redux/cart/cartSlice";
+import { productModal, addToCart } from "../../../redux/cart/cartSlice";
 
 export default function ProductCard(product) {
   const dispatch = useDispatch();
   const { name, price, img, id } = product;
+
+  const handleAddProduct = () => {
+    dispatch(addToCart(product));
+    dispatch(productModal());
+    setTimeout(() => {
+      dispatch(productModal());
+    }, 2000);
+  };
 
   return (
     <>
@@ -18,7 +26,7 @@ export default function ProductCard(product) {
         <ProductData>
           <span>{name}</span>
           <p>${price}</p>
-          <CartBtn card={true} onClick={() => dispatch(addToCart(product))}>
+          <CartBtn card={true} onClick={() => handleAddProduct()}>
             Añadir al carrito
           </CartBtn>
         </ProductData>

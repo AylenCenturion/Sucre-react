@@ -23,7 +23,7 @@ export const HeaderStyled = styled.div`
 
 export const LogoContainer = styled.div`
   width: 140px;
-  z-index: 4;
+  z-index: 3;
 
   & img {
     width: 100%;

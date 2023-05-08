@@ -11,16 +11,17 @@ import {
   UserPurchaseData,
   UserSectionContainer,
 } from "./UserStyles";
-import { clearCart } from "../../redux/cart/cartSlice";
+import { clearCart, handleLoader } from "../../redux/cart/cartSlice";
 import UserCard from "../../components/sideSections/user/userCard";
 import {
   Divider,
   DeliveryInfo,
 } from "../../components/headers/cart/CartStyled";
+import { ButtonSpinner } from "@chakra-ui/react";
 
 const User = () => {
   const { isAuth } = useSelector((state) => state.user);
-  const { cart, totalPrice, shippingCost } = useSelector(
+  const { cart, loader, totalPrice, shippingCost } = useSelector(
     (state) => state.allCart
   );
 
@@ -44,9 +45,12 @@ const User = () => {
   };
 
   const handlePurchase = () => {
-    // loader
-    navigate("/congrats");
-    dispatch(clearCart());
+    dispatch(handleLoader());
+    setTimeout(() => {
+      navigate("/congrats");
+      dispatch(clearCart());
+      dispatch(handleLoader());
+    }, 2000);
   };
 
   return (
@@ -56,6 +60,7 @@ const User = () => {
 
         <BackSectionStyled>
           <UserSectionContainer>
+            <h4>Su carrito</h4>
             {cart.length ? (
               cart.map((item) => <UserCard key={item.id} {...item} />)
             ) : (
@@ -82,7 +87,10 @@ const User = () => {
                   <h3>Total:</h3>
                   <span>${shippingCost + totalPrice} </span>
                 </DeliveryInfo>
-                <SideBtn onClick={() => handlePurchase()}>Comprar</SideBtn>
+                <SideBtn onClick={() => handlePurchase()}>
+                  {!loader && "Comprar"}
+                  {loader && <ButtonSpinner size="lg" />}
+                </SideBtn>
               </UserPurchaseData>
             ) : (
               ""

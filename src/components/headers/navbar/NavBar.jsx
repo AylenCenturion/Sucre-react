@@ -5,6 +5,8 @@ import {
   StyledNavLink,
   NavLogo,
   StyledNavbar,
+  CartCounter,
+  CartLogoContainer,
 } from "./StyledNavBar";
 import {
   faBars,
@@ -22,10 +24,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 const NavBar = (props) => {
-  const { isAuth, username } = useSelector((state) => state.user);
+  const { isAuth } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { blur, burgerDrop, cartDrop } = useSelector((state) => state.navbar);
+
+  const { totalQuantity } = useSelector((state) => state.allCart);
 
   return (
     <>
@@ -54,11 +58,15 @@ const NavBar = (props) => {
             }
           />
 
-          <NavLogo
-            className="fixedLogos"
-            icon={faCartShopping}
-            onClick={() => dispatch(handleCart())}
-          />
+          <CartLogoContainer>
+            <NavLogo
+              className="fixedLogos"
+              icon={faCartShopping}
+              onClick={() => dispatch(handleCart())}
+            />
+            {totalQuantity != 0 && <CartCounter>{totalQuantity}</CartCounter>}
+          </CartLogoContainer>
+
           <Dropdown open={cartDrop} bg={props.color}>
             <Cart color={props.color} />
           </Dropdown>

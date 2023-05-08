@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const SuccessModal = styled.div`
   padding: 12px;
   background-color: var(--brown);
@@ -7,12 +9,7 @@ export const SuccessModal = styled.div`
   align-items: center;
   position: fixed;
   bottom: 0;
-  transform: translateY(200%);
+  transform: ${({ open }) => (open ? "translateY(0)" : "translateY(200%)")};
   transition: all 0.4s ease-in;
-  width: 100%;
-
-  &.activeModal {
-    transform: translateY(0);
-    transition: all 0.4s ease-in;
-  }
+  width: 100vw;
 `;

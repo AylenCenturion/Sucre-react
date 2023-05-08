@@ -23,7 +23,8 @@ export const Dropdown = styled.div`
   z-index: ${({ open }) => (open ? "3" : "6")};
   position: absolute;
   top: 130px;
-  right: ${({ open }) => (open ? "0" : "-100%")};
+  right: 0;
+  display: ${({ open }) => (open ? "flex" : "none")};
   align-items: center;
   width: 320px;
   gap: 20px;
@@ -74,6 +75,26 @@ export const FixedLogosContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+`;
+
+export const CartLogoContainer = styled.div`
+  position: relative;
+`;
+
+export const CartCounter = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px solid #fff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 4px 4px;
+  right: -15px;
+  top: -15px;
+  font-size: 12px;
 `;
 
 export const NavLogo = styled(FontAwesomeIcon)`

@@ -22,7 +22,8 @@ export const SideBtn = styled.button`
   justify-content: center;
   align-items: center;
 
-  &:hover {
+  &:hover,
+  :focus {
     background-position: ${({ disabled }) => (disabled ? "right" : "left")};
     color: ${({ disabled }) => (disabled ? "var(--brown)" : "#fff")};
   }

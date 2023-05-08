@@ -9,7 +9,7 @@ export const UserSectionContainer = styled.div`
   gap: 15px;
 
   & p {
-    font-size: 20px;
+    font-size: 19px;
     text-align: center;
     line-height: 30px;
   }
@@ -17,6 +17,10 @@ export const UserSectionContainer = styled.div`
   & span {
     font-weight: 500;
     cursor: pointer;
+  }
+
+  & h4 {
+    font-size: 20px;
   }
 `;
 
