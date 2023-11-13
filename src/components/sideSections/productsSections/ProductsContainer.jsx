@@ -43,7 +43,7 @@ export default function ProductsContainer() {
             hidden={products.length <= limit}
             onClick={() => setLimit((prevLimit) => prevLimit + INITIAL_LIMIT)}
           >
-            See more
+            Ver más
           </SideBtn>
         )}
       </ProductsContainerStyled>

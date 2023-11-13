@@ -10,8 +10,9 @@ export const FooterSectionsStyled = styled.div`
   gap: 30px;
   border-bottom-width: 1px solid #fff;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 293px) {
     justify-content: left;
+    width: 100%;
   }
 `;
 
@@ -21,13 +22,17 @@ export const FooterSection = styled.div`
   gap: 15px;
 
   & p {
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
+  }
+
+  @media screen and (max-width: 350px) {
+    gap: 5px;
   }
 `;
 
 export const FooterTitle = styled.h6`
   font-weight: 500;
-  font-size: 20px;
+  font-size: clamp(16px, 4vw, 20px);
 `;
 
 export const FooterContact = styled.div`
@@ -42,7 +47,7 @@ export const FooterIcon = styled(FontAwesomeIcon)`
 `;
 
 export const FooterLinkItem = styled(NavLink)`
-  font-size: 17px;
+  font-size: clamp(14px, 4vw, 17px);
   color: #fff;
 `;
 

@@ -28,8 +28,20 @@ const navbarSlice = createSlice({
         ? (state.burgerDrop = !state.burgerDrop)
         : (state.cartDrop = !state.cartDrop);
     },
+    handleRedirection: (state) => {
+      if (state.burgerDrop) {
+        state.burgerDrop = !state.burgerDrop;
+      }
+      if (state.cartDrop) {
+        state.cartDrop = !state.cartDrop;
+      }
+      if (state.blur) {
+        state.blur = !state.blur;
+      }
+    },
   },
 });
 
 export const navbarReducer = navbarSlice.reducer;
-export const { handleBurger, handleCart, handleBlur } = navbarSlice.actions;
+export const { handleBurger, handleCart, handleBlur, handleRedirection } =
+  navbarSlice.actions;

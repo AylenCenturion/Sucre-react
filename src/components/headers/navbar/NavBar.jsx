@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Dropdown,
   FixedLogosContainer,
@@ -20,6 +20,7 @@ import {
   handleBlur,
   handleBurger,
   handleCart,
+  handleRedirection,
 } from "../../../redux/navbar/navbarSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -42,10 +43,27 @@ const NavBar = (props) => {
           />
 
           <Dropdown open={burgerDrop} className="navMenu" bg={props.color}>
-            <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/productos">Productos</StyledNavLink>
-            <StyledNavLink to="/contacto">Contacto</StyledNavLink>
-            <StyledNavLink to="/tiendas">Tiendas</StyledNavLink>
+            <StyledNavLink onClick={() => dispatch(handleRedirection())} to="/">
+              Home
+            </StyledNavLink>
+            <StyledNavLink
+              onClick={() => dispatch(handleRedirection())}
+              to="/productos"
+            >
+              Productos
+            </StyledNavLink>
+            <StyledNavLink
+              onClick={() => dispatch(handleRedirection())}
+              to="/contacto"
+            >
+              Contacto
+            </StyledNavLink>
+            <StyledNavLink
+              onClick={() => dispatch(handleRedirection())}
+              to="/tiendas"
+            >
+              Tiendas
+            </StyledNavLink>
           </Dropdown>
         </nav>
 
@@ -64,7 +82,7 @@ const NavBar = (props) => {
               icon={faCartShopping}
               onClick={() => dispatch(handleCart())}
             />
-            {totalQuantity != 0 && <CartCounter>{totalQuantity}</CartCounter>}
+            {totalQuantity !== 0 && <CartCounter>{totalQuantity}</CartCounter>}
           </CartLogoContainer>
 
           <Dropdown open={cartDrop} bg={props.color}>

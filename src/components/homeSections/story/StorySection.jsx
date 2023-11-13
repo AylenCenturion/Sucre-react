@@ -12,11 +12,12 @@ export default function StorySection() {
           <StoryText>
             <SectionTitle>Nuestra historia</SectionTitle>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Provident eos sed omnis cupiditate aliquam voluptatum. Possimus
-              debitis eveniet placeat cum aliquid, error, quam quod blanditiis
-              culpa rem enim quos iusto eaque dolore ea fugit, harum voluptas
-              ipsum repudiandae libero dolorum.
+              Nos dedicamos hace más de 70 años a endulzar los hogares de los
+              habitantes de la ciudad Buenos Aires, primero desde el barrio de
+              Belgrano y ahora también desde Recoleta y Villa Urquiza. Buscamos
+              la excelencia en nuestros productos y en nuestras cocinas, con
+              recetas tradicionales y otras novedosas, para satisfacer a todos
+              los paladares.
             </p>
           </StoryText>
           <StoryImg>

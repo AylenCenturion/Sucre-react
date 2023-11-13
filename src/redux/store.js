@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { productsReducer } from "./products/productsSlice";
 import { recommendedReducer } from "./recommended/recommendedSlice";
 import { categoriesReducer } from "./categories/categoriesSlice";
-// import { cartReducer } from "./cart/cart";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";

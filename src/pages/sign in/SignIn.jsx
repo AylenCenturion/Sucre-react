@@ -68,7 +68,7 @@ const SignIn = () => {
               isError={touched.location && errors.location}
               {...getFieldProps("location")}
             />
-            <SideBtn type="submit">Sign in</SideBtn>
+            <SideBtn type="submit">Registrate</SideBtn>
           </FormContainer>
         </BackSectionStyled>
       </Layout>

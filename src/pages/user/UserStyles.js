@@ -21,14 +21,16 @@ export const UserSectionContainer = styled.div`
 
   & h4 {
     font-size: 20px;
+    color: var(--darkGrey);
   }
 `;
 
-export const LogOutBtn = styled.h4`
+export const LogOutBtn = styled.h5`
   font-weight: 500;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 40px;
+  margin-top: 10px;
+  color: var(--darkGrey);
 `;
 
 export const UserPurchaseData = styled.div`

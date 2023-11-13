@@ -23,15 +23,17 @@ export default function ServicieSection() {
             <ServiciesLine>
               <div>
                 <h6>Delivery</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Llegamos a la puerta de todos los hogares de CABA y AMBA.</p>
               </div>
               <div>
                 <h6>La mejor calidad</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>
+                  Productos de excelencia, certificado por nuestros clientes .
+                </p>
               </div>
               <div>
-                <h6>Eventos</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h6>Recién horneado</h6>
+                <p>Calentito y fresco, siempre listo para vos.</p>
               </div>
             </ServiciesLine>
             <CookiesContainer>
@@ -40,15 +42,15 @@ export default function ServicieSection() {
             <ServiciesLine>
               <div>
                 <h6>Compra online</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Registarte y disfruta sin moverte de tu casa.</p>
               </div>
               <div>
-                <h6>Recién horneado</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h6>Eventos</h6>
+                <p>Contratanos para tus eventos en la sección de contacto.</p>
               </div>
               <div>
-                <h6>Descuentos especiales</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h6>Cerca tuyo</h6>
+                <p>Acercate a cualquiera de nuestras tres sucursales.</p>
               </div>
             </ServiciesLine>
           </ServiciesContainer>

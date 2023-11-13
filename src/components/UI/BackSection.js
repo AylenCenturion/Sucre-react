@@ -10,4 +10,8 @@ export const BackSectionStyled = styled.div`
   gap: 20px;
   margin: 0 auto;
   background: #fff;
+
+  @media screen and (max-width: 900px) {
+    padding: 20px;
+  }
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FooterContact,
   FooterSection,
@@ -38,6 +38,7 @@ const FooterSections = () => {
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=sucre@gmail.com"
             target="_blank"
+            rel="noreferrer"
           >
             <FooterIcon icon={faEnvelope} />
           </a>
@@ -57,9 +58,9 @@ const FooterSections = () => {
         <FooterTitle>Navegá</FooterTitle>
         <FooterNav>
           <FooterLinkItem to="/">Home</FooterLinkItem>
-          <FooterLinkItem to="/productos">Products</FooterLinkItem>
-          <FooterLinkItem to="/contacto">Contact</FooterLinkItem>
-          <FooterLinkItem to="/tiendas">Stores</FooterLinkItem>
+          <FooterLinkItem to="/productos">Productos</FooterLinkItem>
+          <FooterLinkItem to="/contacto">Contacto</FooterLinkItem>
+          <FooterLinkItem to="/tiendas">Tiendas</FooterLinkItem>
         </FooterNav>
       </FooterSection>
 

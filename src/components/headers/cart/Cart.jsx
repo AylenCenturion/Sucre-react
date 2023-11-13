@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import CartCard from "./CartCard";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCartTotal } from "../../../redux/cart/cartSlice";
-import { handleBlur } from "../../../redux/navbar/navbarSlice";
+import { handleRedirection } from "../../../redux/navbar/navbarSlice";
 
 export default function Cart(props) {
   const navigate = useNavigate();
@@ -27,16 +27,21 @@ export default function Cart(props) {
 
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [cart]);
+  });
 
   const handleBuyBtn = () => {
     if (!isAuth) {
       alert("Registrese para completar su compra");
       navigate("/signin");
-      handleBlur();
+      dispatch(handleRedirection());
     }
     navigate(`/usuario`);
-    handleBlur();
+    dispatch(handleRedirection());
+  };
+
+  const handleRegistration = () => {
+    navigate("/signin");
+    dispatch(handleRedirection());
   };
 
   return (
@@ -92,7 +97,7 @@ export default function Cart(props) {
         </CartBtn>
         {!isAuth && (
           <p>
-            <span onClick={() => navigate("/signin")}>Registrate</span> para
+            <span onClick={() => handleRegistration()}>Registrate</span> para
             comprar
           </p>
         )}

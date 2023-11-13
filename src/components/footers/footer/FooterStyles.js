@@ -18,6 +18,10 @@ export const FooterStyled = styled.div`
   gap: 35px;
   max-width: 1400px;
   padding: 45px;
+
+  @media screen and (max-width: 1200px) {
+    padding: 20px;
+  }
 `;
 
 export const FooterMap = styled.div`
